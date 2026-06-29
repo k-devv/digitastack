@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', config('app.name'))</title>
-    <meta name="description" content="@yield('description', config('app.name') . ' - AI tools, SEO insights, and digital strategies that actually work.')">
-
     @include('components.seo.meta-tags')
+    @include('components.seo.schema')
+
+    <title>@yield('title', config('app.name'))</title>
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +24,7 @@
         body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.7; }
         a { color: var(--accent); text-decoration: none; }
         a:hover { color: var(--accent-hover); }
-        img { max-width: 100%; height: auto; }
+        img { max-width: 100%; height: auto; display: block; }
         .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
         .page-content { padding: 3rem 0 5rem; }
         .page-content h1 { font-size: 2rem; margin-bottom: 1rem; line-height: 1.3; }
@@ -34,17 +34,26 @@
         .page-content ul, .page-content ol { margin: 0 0 1rem 1.5rem; }
         .page-content li { margin-bottom: 0.5rem; }
         .page-content strong { font-weight: 600; }
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .page-content h1 { font-size: 1.5rem; }
+            .page-content h2 { font-size: 1.25rem; }
+        }
     </style>
     @yield('head')
 </head>
 <body>
     @include('components.header')
+    @include('components.social-proof')
 
     <main>
         @yield('content')
     </main>
 
+    @include('components.newsletter-cta')
     @include('components.footer')
+    @include('components.cookie-consent')
+    @include('components.adsense')
 
     @yield('scripts')
 </body>
