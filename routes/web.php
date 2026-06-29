@@ -15,3 +15,6 @@ Route::get('/privacy-policy', [PagesController::class, 'privacy'])->name('privac
 Route::get('/cookie-policy', [PagesController::class, 'cookie'])->name('cookie');
 Route::get('/terms-of-service', [PagesController::class, 'terms'])->name('terms');
 Route::get('/disclaimer', [PagesController::class, 'disclaimer'])->name('disclaimer');
+
+// Blog feature
+require __DIR__ . '/../app/Blog/Routes/blog.php';
