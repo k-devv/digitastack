@@ -6,13 +6,17 @@
 @section('content')
 <main class="page-content">
     <div class="container">
+        @include('components.breadcrumbs', ['breadcrumbs' => ['Search' => null]])
         <h1>Search</h1>
         <p style="color: var(--muted); margin-bottom: 2rem;">Find articles about AI tools, SEO, and digital strategy.</p>
 
-        @include('components.search-form')
+        <form action="/search" method="GET" role="search" class="search-form">
+            <input type="search" name="q" placeholder="Search articles..." aria-label="Search" required>
+            <button type="submit">Search</button>
+        </form>
 
-        <div style="margin-top: 2rem; padding: 2rem; background: var(--surface); border-radius: 8px; text-align: center;">
-            <p style="color: var(--muted);">No results to display yet. Articles coming soon.</p>
+        <div class="empty-state">
+            <p>No results to display yet. Articles coming soon.</p>
         </div>
     </div>
 </main>

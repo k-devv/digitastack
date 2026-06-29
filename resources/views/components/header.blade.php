@@ -1,11 +1,16 @@
-<header style="border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 60px;">
-        @include('components.brand')
-        <nav style="display: flex; gap: 1.5rem; align-items: center;">
+<header class="site-header">
+    <div class="container">
+        <a href="/" class="site-brand">
+            @include('components.brand')
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            &#9776;
+        </button>
+        <nav class="site-nav">
             <a href="/blog">Blog</a>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
-            <a href="/search" aria-label="Search" style="color: var(--muted);">🔍</a>
+            <a href="/search" class="nav-search" aria-label="Search">&#128269;</a>
         </nav>
     </div>
 </header>
