@@ -13,6 +13,7 @@
 </head>
 <body>
     @include('components.header')
+    <div class="nav-overlay" aria-hidden="true"></div>
     @include('components.social-proof')
 
     <main>
@@ -31,16 +32,17 @@
     (function() {
         var toggle = document.querySelector('.nav-toggle');
         var nav = document.querySelector('.site-nav');
-        if (toggle && nav) {
+        var overlay = document.querySelector('.nav-overlay');
+        if (toggle && nav && overlay) {
             toggle.addEventListener('click', function() {
                 nav.classList.toggle('open');
+                overlay.classList.toggle('open');
                 toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
             });
-            document.addEventListener('click', function(e) {
-                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-                    nav.classList.remove('open');
-                    toggle.setAttribute('aria-expanded', 'false');
-                }
+            overlay.addEventListener('click', function() {
+                nav.classList.remove('open');
+                overlay.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
             });
         }
     })();
