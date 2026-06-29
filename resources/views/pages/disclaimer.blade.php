@@ -6,6 +6,7 @@
 @section('content')
 <main class="page-content">
     <div class="container">
+        @include('components.breadcrumbs', ['breadcrumbs' => ['Disclaimer' => null]])
         <h1>Disclaimer</h1>
         <p style="color: var(--muted); margin-bottom: 2rem;">Last Updated: {{ date('F j, Y') }}</p>
 

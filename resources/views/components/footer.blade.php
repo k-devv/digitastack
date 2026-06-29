@@ -3,11 +3,6 @@
         <div style="max-width: 280px;">
             @include('components.brand')
             <p style="color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem;">AI tools, SEO insights, and digital strategies that actually work.</p>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="#" aria-label="Twitter" style="color: var(--muted); font-size: 0.875rem;">Twitter</a>
-                <a href="#" aria-label="LinkedIn" style="color: var(--muted); font-size: 0.875rem;">LinkedIn</a>
-                <a href="#" aria-label="YouTube" style="color: var(--muted); font-size: 0.875rem;">YouTube</a>
-            </div>
         </div>
         <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
             <div>
@@ -16,6 +11,7 @@
                     <a href="/blog" style="font-size: 0.875rem;">Blog</a>
                     <a href="/about" style="font-size: 0.875rem;">About</a>
                     <a href="/contact" style="font-size: 0.875rem;">Contact</a>
+                    <a href="/search" style="font-size: 0.875rem;">Search</a>
                 </div>
             </div>
             <div>

@@ -6,6 +6,7 @@
 @section('content')
 <main class="page-content">
     <div class="container">
+        @include('components.breadcrumbs', ['breadcrumbs' => ['Cookie Policy' => null]])
         <h1>Cookie Policy</h1>
         <p style="color: var(--muted); margin-bottom: 2rem;">Effective Date: {{ date('F j, Y') }}</p>
 

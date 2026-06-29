@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'contactSubmit'])->name('contact.submit');
+Route::get('/search', [PagesController::class, 'search'])->name('search');
 Route::get('/privacy-policy', [PagesController::class, 'privacy'])->name('privacy');
 Route::get('/cookie-policy', [PagesController::class, 'cookie'])->name('cookie');
 Route::get('/terms-of-service', [PagesController::class, 'terms'])->name('terms');

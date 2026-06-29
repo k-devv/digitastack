@@ -6,6 +6,7 @@
 @section('content')
 <main class="page-content">
     <div class="container">
+        @include('components.breadcrumbs', ['breadcrumbs' => ['About' => null]])
         <h1>About DigitalStack</h1>
 
         <p>Welcome! My name is Kennedy — and this site is where I document everything I learn about AI tools, SEO, and building things on the internet.</p>

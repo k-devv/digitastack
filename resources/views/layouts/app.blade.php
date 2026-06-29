@@ -52,7 +52,10 @@
 
     @include('components.newsletter-cta')
     @include('components.footer')
+
+    {{-- Consent Mode defaults + CookieYes CMP (must load before any other scripts) --}}
     @include('components.cookie-consent')
+    {{-- AdSense (loads after CMP handles consent) --}}
     @include('components.adsense')
 
     @yield('scripts')

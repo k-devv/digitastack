@@ -3,6 +3,7 @@
     $description = $description ?? 'AI tools, SEO insights, and digital strategies that actually work.';
     $url = url()->current();
     $image = $image ?? config('app.url') . '/og-image.png';
+    $siteName = config('app.name');
 @endphp
 
 <meta charset="UTF-8">
@@ -12,14 +13,18 @@
 <link rel="canonical" href="{{ $url }}">
 <meta name="robots" content="index, follow">
 
+{{-- Open Graph --}}
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ $url }}">
 <meta property="og:image" content="{{ $image }}">
-<meta property="og:site_name" content="{{ config('app.name') }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="{{ $siteName }}">
 <meta property="og:locale" content="en_US">
 
+{{-- Twitter Card --}}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
