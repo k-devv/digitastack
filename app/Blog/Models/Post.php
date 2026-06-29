@@ -49,6 +49,9 @@ class Post extends Model
         'is_featured'  => 'boolean',
         'views_count'  => 'integer',
         'reading_time' => 'integer',
+        'sort_order'   => 'integer',
+        'category_id'  => 'integer',
+        'author_id'    => 'integer',
     ];
 
     protected $dates = ['published_at'];
