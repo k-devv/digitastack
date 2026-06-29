@@ -70,33 +70,36 @@ mysite/
 │       │
 │       ├── blog/                          ← Blog feature views
 │       │   ├── components/
-│       │   │   ├── index/
-│       │   │   │   ├── header.blade.php
-│       │   │   │   ├── post-grid.blade.php
-│       │   │   │   ├── sidebar.blade.php
-│       │   │   │   ├── filters.blade.php
-│       │   │   │   └── pagination.blade.php
-│       │   │   ├── show/
+│       │   │   ├── header.blade.php
+│       │   │   ├── post-grid.blade.php
+│       │   │   ├── post-card.blade.php
+│       │   │   ├── sidebar.blade.php
+│       │   │   ├── filters/
+│       │   │   │   ├── category-filter.blade.php
+│       │   │   │   └── date-filter.blade.php
+│       │   │   ├── article/
 │       │   │   │   ├── article-header.blade.php
 │       │   │   │   ├── article-body.blade.php
 │       │   │   │   ├── author-bio.blade.php
-│       │   │   │   ├── related-posts.blade.php
-│       │   │   │   └── comment-form.blade.php
-│       │   │   └── post-card.blade.php
+│       │   │   │   └── related-posts.blade.php
+│       │   │   ├── comments/
+│       │   │   │   ├── comment-form.blade.php
+│       │   │   │   └── comment-list.blade.php
+│       │   │   └── pagination.blade.php
 │       │   └── pages/
 │       │       ├── index.blade.php        ← 10 lines: just @includes
 │       │       └── show.blade.php         ← 10 lines: just @includes
 │       │
 │       ├── seo/                           ← SEO feature views
 │       │   ├── components/
-│       │   │   ├── index/
-│       │   │   │   ├── header.blade.php
-│       │   │   │   ├── keyword-table.blade.php
-│       │   │   │   ├── stats-bar.blade.php
-│       │   │   │   └── filters.blade.php
-│       │   │   └── show/
-│       │   │       ├── article-header.blade.php
-│       │   │       └── article-body.blade.php
+│       │   │   ├── header.blade.php
+│       │   │   ├── keyword-table.blade.php
+│       │   │   ├── stats-bar.blade.php
+│       │   │   ├── article/
+│       │   │   │   ├── article-header.blade.php
+│       │   │   │   └── article-body.blade.php
+│       │   │   └── filters/
+│       │   │       └── topic-filter.blade.php
 │       │   └── pages/
 │       │       ├── index.blade.php
 │       │       └── show.blade.php
@@ -108,17 +111,13 @@ mysite/
 │               ├── dashboard.blade.php
 │               ├── blog/
 │               │   ├── components/
-│               │   │   ├── index/
-│               │   │   │   ├── header.blade.php
-│               │   │   │   ├── post-table.blade.php
-│               │   │   │   ├── stats-bar.blade.php
-│               │   │   │   └── filters/
-│               │   │   │       ├── status-filter.blade.php
-│               │   │   │       └── category-filter.blade.php
-│               │   │   ├── create/
-│               │   │   │   └── post-form.blade.php
-│               │   │   └── show/
-│               │   │       └── post-details.blade.php
+│               │   │   ├── header.blade.php
+│               │   │   ├── post-table.blade.php
+│               │   │   ├── stats-bar.blade.php
+│               │   │   ├── post-form.blade.php
+│               │   │   └── filters/
+│               │   │       ├── status-filter.blade.php
+│               │   │       └── category-filter.blade.php
 │               │   ├── index.blade.php
 │               │   ├── create.blade.php
 │               │   └── show.blade.php
@@ -172,8 +171,8 @@ Index pages are NOT pages. They are component manifests. 10-20 lines max.
 
 **If an index page has more than 20 lines, you wrote too much logic.**
 
-### 2. Components Are Broken Down to the Smallest Piece
-Every piece of UI is its own file. One file = one job.
+### 2. Components Are Free and Broken to the Smallest Piece
+Every piece of UI is its own file. One file = one job. Folder names are free — name them whatever makes sense for that feature.
 
 **DON'T:**
 ```
@@ -183,19 +182,45 @@ components/post-card.blade.php      ← 200 lines doing everything
 **DO:**
 ```
 components/
+├── header.blade.php                ← Shared across pages
+├── post-grid.blade.php
+├── post-card.blade.php
+├── sidebar.blade.php
+├── pagination.blade.php
+├── filters/
+│   ├── category-filter.blade.php
+│   └── date-filter.blade.php
+├── article/
+│   ├── article-header.blade.php
+│   ├── article-body.blade.php
+│   ├── author-bio.blade.php
+│   └── related-posts.blade.php
+└── comments/
+    ├── comment-form.blade.php
+    └── comment-list.blade.php
+```
+
+Folder names are free: `article/`, `comments/`, `filters/`, `tabs/`, `modals/` — whatever makes sense. The only rule is: one file = one job.
+
+**Real example from infomly:**
+```
+MyOpenCodeAgents/components/
+├── run/
+│   ├── run-header.blade.php
+│   ├── live-tab.blade.php
+│   └── logs-tab.blade.php
+├── messages/
+│   ├── message-list.blade.php
+│   ├── message-row.blade.php
+│   └── filters/
+│       └── read-filter.blade.php
+├── form/
+│   ├── agent-form.blade.php
+│   └── form-field.blade.php
 ├── index/
-│   ├── header.blade.php            ← Page header
-│   ├── post-grid.blade.php         ← Grid layout
-│   ├── post-card.blade.php         ← Single card
-│   ├── sidebar.blade.php           ← Sidebar
-│   ├── filters.blade.php           ← Filter controls
-│   └── pagination.blade.php        ← Pagination
-├── show/
-│   ├── article-header.blade.php    ← Title, date, category
-│   ├── article-body.blade.php      ← Content
-│   ├── author-bio.blade.php        ← Author card
-│   ├── related-posts.blade.php     ← Related section
-│   └── comment-form.blade.php      ← Comment form
+│   ├── agent-card.blade.php
+│   ├── stats-bar.blade.php
+│   └── create-modal.blade.php
 ```
 
 **Rule:** If a component has 3 different UI sections, split it into 3 files.
